@@ -1,7 +1,7 @@
 import argparse
 
 import autopy
-from PIL import Image
+import img2pdf
 
 
 def screenshot(top_left, right_bottom, next_page, total_page):
@@ -9,19 +9,19 @@ def screenshot(top_left, right_bottom, next_page, total_page):
     images = []
     for i in range(total_page):
         page_num = "{}".format(i).zfill(len(str(total_page)))
-        file_name = 'tmp/page-{}.png'.format(page_num)
+        file_name = '/tmp/book-page-{}.png'.format(page_num)
         images.append(file_name)
 
-        autopy.bitmap.capture_screen((top_left, rect_size)).save(file_name)
         autopy.mouse.move(*next_page)
         autopy.mouse.click(delay=1)
+        autopy.bitmap.capture_screen((top_left, rect_size)).save(file_name)
 
     return images
 
 
 def image2pdf(images):
-    pil_images = [Image.open(i) for i in images]
-    pil_images[0].save('book.pdf', save_all=True, append_images=pil_images[1:])
+    with open("book.pdf", "wb") as f:
+        f.write(img2pdf.convert(images))
 
 
 if __name__ == "__main__":
@@ -44,3 +44,5 @@ if __name__ == "__main__":
 
     images = screenshot(top_left, right_bottom, next_button, total_page)
     image2pdf(images)
+
+    print("Done, book saved in book.pdf.")

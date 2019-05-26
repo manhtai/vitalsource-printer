@@ -1,2 +1,2 @@
 autopy
-pillow
+img2pdf
