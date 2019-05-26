@@ -8,6 +8,6 @@ current page in the opened book.
 
 ```bash
 pip install -r requirements.txt
-python app.py top_left rigt_bottom next_button total_page
+python app.py top_left right_bottom next_button total_page
 # Ex: python app.py 153,78 892,990 941,537 785
 ```
