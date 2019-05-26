@@ -1,0 +1,2 @@
+autopy
+pillow
