@@ -1,4 +1,6 @@
 import argparse
+import os
+import tempfile
 
 import autopy
 import img2pdf
@@ -7,9 +9,10 @@ import img2pdf
 def screenshot(top_left, right_bottom, next_page, total_page):
     rect_size = (right_bottom[0] - top_left[0], right_bottom[1] - top_left[1])
     images = []
+    temp_dir = tempfile.mkdtemp()
     for i in range(total_page):
         page_num = "{}".format(i).zfill(len(str(total_page)))
-        file_name = '/tmp/book-page-{}.png'.format(page_num)
+        file_name = os.path.join(temp_dir, 'book-page-{}.png'.format(page_num))
         images.append(file_name)
 
         autopy.mouse.move(*next_page)
