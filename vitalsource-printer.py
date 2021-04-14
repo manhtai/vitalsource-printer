@@ -1,8 +1,9 @@
 import argparse
 import os
 import tempfile
+import time
 
-import autopy
+import pyautogui
 import img2pdf
 
 
@@ -15,9 +16,11 @@ def screenshot(top_left, right_bottom, next_page, total_page):
         file_name = os.path.join(temp_dir, 'book-page-{}.png'.format(page_num))
         images.append(file_name)
 
-        autopy.mouse.move(*next_page)
-        autopy.mouse.click(delay=1)
-        autopy.bitmap.capture_screen((top_left, rect_size)).save(file_name)
+        pyautogui.click(x=next_page[0], y=next_page[1])
+        time.sleep(1)
+        pyautogui.screenshot(file_name,
+                             region=(top_left[0], top_left[1], rect_size[0],
+                                     rect_size[1]))
 
     return images
 
