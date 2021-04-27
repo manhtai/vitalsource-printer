@@ -12,5 +12,16 @@ command. Linux uses the "scrot" command, which you may need to install.
 ```bash
 pip install -r requirements.txt
 python vitalsource-printer.py top_left right_bottom next_button total_page
-# Ex: python app.py 153,78 892,990 941,537 785
+# Ex: python vitalsource-printer.py 153,78 892,990 941,537 785
+```
+
+## Finding Cursor Coordinates
+
+To find the coordinates you will need to supply as inputs for the
+script, you may use "position()" function of the pyautogui module.
+
+```bash
+python
+>>> import pyautogui
+>>> pyautogui.position() # while cursor is on desired location
 ```
