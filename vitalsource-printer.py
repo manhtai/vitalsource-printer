@@ -16,11 +16,13 @@ def screenshot(top_left, right_bottom, next_page, total_page):
         file_name = os.path.join(temp_dir, 'book-page-{}.png'.format(page_num))
         images.append(file_name)
 
-        pyautogui.click(x=next_page[0], y=next_page[1])
-        time.sleep(1)
+        # Take a screenshot
         pyautogui.screenshot(file_name,
                              region=(top_left[0], top_left[1], rect_size[0],
                                      rect_size[1]))
+        # click the next button
+        pyautogui.click(x=next_page[0], y=next_page[1])
+        time.sleep(1) # wait a second
 
     return images
 
