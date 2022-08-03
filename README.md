@@ -12,6 +12,6 @@ python app.py top_left right_bottom next_button total_page
 # Ex: python app.py 153,78 892,990 941,537 785
 ```
 
-## Electron app
+## GUI app (For macOS & Windows)
 
 https://github.com/plainlab/plainprinter
