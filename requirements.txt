@@ -1,2 +1,2 @@
-autopy
+pyautogui
 img2pdf
